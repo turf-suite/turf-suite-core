@@ -1,0 +1,33 @@
+:root {
+    --primary: #8fb3ff;
+    --secondary-light: #dee5f6;
+    --secondary-dark: #8fb3ff;
+    --accent-light: #2d1fd8;
+    --accent-dark: #0d172f;
+    --background-light: #f7f8fb;
+    --background-dark: #f7f8fb;
+    --container-background-light: #fff;
+    --container-background-dark: #2d353a;
+    --border-filled-light: #ddd;
+    --border-filled-dark: #475259;
+    --border-hover-light: #bbb;
+    --border-hover-dark: #5b666f;
+    --text-light: #1a1d1f;
+    --text-dark: #f7f8fb;
+    --text-variant-light: #4a5054;
+    --text-variant-dark: #bcc1c9;
+
+    --display-font-size: 3.052rem;
+    --heading-font-size: 1.953rem;
+    --subheading-font-size: 1.563rem;
+    --body-font-size: 1rem;
+    --small-font-size: 0.75rem;
+
+    --display-font-weight: 700;
+    --heading-font-weight: 700;
+    --subheading-font-weight: 700;
+    --body-font-weight: 400;
+    --smal-font-weight: 400;
+
+    --font-type: 'Inter', sans-serif;
+}

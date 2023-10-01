@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@turf-suite-core/ui-components": ["ui-components/src/index.ts"]
+      "@turf-suite-core/ui": ["libs/ui/src/index.ts"],
+      "@turf-suite-core/ui/server": ["libs/ui/src/server.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
