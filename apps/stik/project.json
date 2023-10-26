@@ -1,7 +1,7 @@
 {
-  "name": "hub",
+  "name": "stik",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/hub",
+  "sourceRoot": "apps/stik",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,11 +9,11 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/hub"
+        "outputPath": "dist/apps/stik"
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/hub"
+          "outputPath": "apps/stik"
         },
         "production": {}
       }
@@ -22,16 +22,16 @@
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "hub:build",
+        "buildTarget": "stik:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "hub:build:development",
+          "buildTarget": "stik:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "hub:build:production",
+          "buildTarget": "stik:build:production",
           "dev": false
         }
       }
@@ -39,14 +39,14 @@
     "export": {
       "executor": "@nx/next:export",
       "options": {
-        "buildTarget": "hub:build:production"
+        "buildTarget": "stik:build:production"
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/hub/jest.config.ts",
+        "jestConfig": "apps/stik/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -60,7 +60,7 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/hub/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/stik/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },

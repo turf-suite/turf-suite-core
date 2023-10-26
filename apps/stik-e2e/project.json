@@ -1,19 +1,19 @@
 {
-  "name": "hub-e2e",
+  "name": "stik-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/hub-e2e/src",
+  "sourceRoot": "apps/stik-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nx/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/hub-e2e/cypress.config.ts",
-        "devServerTarget": "hub:serve:development",
+        "cypressConfig": "apps/stik-e2e/cypress.config.ts",
+        "devServerTarget": "stik:serve:development",
         "testingType": "e2e"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "hub:serve:production"
+          "devServerTarget": "stik:serve:production"
         }
       }
     },
@@ -21,10 +21,10 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/hub-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": ["apps/stik-e2e/**/*.{js,ts}"]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["hub"]
+  "implicitDependencies": ["stik"]
 }
