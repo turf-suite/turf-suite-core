@@ -53,5 +53,43 @@
       }
     }
   },
+  "create-local-snapshot": {
+    "executor": "nx:run-commands",
+    "options": {
+      "commands": [
+        "npx ts-node libs/supabase/src/create_local_snapshot.ts -P libs/supabase/tsconfig.json"
+      ],
+      "parallel": false
+    }
+  },
+  "create-prod-snapshot": {
+    "executor": "nx:run-commands",
+    "options": {
+      "commands": [
+        "npx ts-node libs/supabase/src/create_prod_snapshot.ts -P libs/supabase/tsconfig.json"
+      ],
+      "parallel": false
+    }
+  },
+  "restore-snapshot-to-local-db": {
+    "executor": "nx:run-commands",
+    "options": {
+      "commands": [
+        "npx ts-node libs/pokemon-db/src/restore_snapshot.ts -P libs/supabase/tsconfig.json"
+      ],
+      "parallel": false,
+      "__unparsed__": []
+    }
+  },
+  "clear-local-db-data": {
+    "executor": "nx:run-commands",
+    "options": {
+      "commands": [
+        "PGPASSWORD=postgres psql -U postgres -h 127.0.0.1 -p 54322 -f libs/supabase/supabase/clear-db.sql"
+      ],
+      "parallel": false,
+      "__unparsed__": []
+    }
+  },
   "tags": []
 }
