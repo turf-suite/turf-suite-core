@@ -1,3 +1,34 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.light {
+  --primary: #B4C0FF;
+  --primary-foreground: #1A1D1F;
+  --secondary: #DEE5F6;
+  --secondary-foreground: #1A1D1F;
+  --accent: #2D1FD8;
+  --accent-foreground: #FFF;
+  --card: #FFF;
+  --card-foreground: #1A1D1F;
+  --background: #F7F8FB;
+  --foreground: #1A1D1F;
+  --border: #DDDDDD;
+  --muted: #4A5054;
+  --muted-foreground: #FFF;
+  --destructive: #D63D3D;
+  --destructive-foreground: #FFF;
+  --success: #57D08F;
+  --success-foreground: #FFF;
+}
+
+.dark {
+  --primary: #8FB3FF;
+  --secondary: #0D172F;
+  --accent: #5E52E2;
+  --background: #1A1D1F;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
