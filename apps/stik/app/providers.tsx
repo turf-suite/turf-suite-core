@@ -3,14 +3,31 @@
 import { CacheProvider } from '@chakra-ui/next-js';
 import { ChakraProvider } from '@chakra-ui/react';
 import { useContext, createContext } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-const SupabaseContext = createContext(null);
+const SupabaseContext = createContext<SupabaseClient | null>(null);
+
+export const useSupabase = () => {
+  const context = useContext(SupabaseContext);
+  if (!context) {
+    throw new Error('Content needs a supabase provider!');
+  }
+  return context;
+};
 
 export function Providers({ children }: { children: React.ReactNode }) {
+  const supabase = createClient(
+    process.env.SUPABASE_URL ?? '',
+    process.env.SUPABASE_KEY ?? ''
+  );
+
   return (
     <CacheProvider>
-      <ChakraProvider>{children}</ChakraProvider>
+      <ChakraProvider>
+        <SupabaseContext.Provider value={supabase}>
+          {children}
+        </SupabaseContext.Provider>
+      </ChakraProvider>
     </CacheProvider>
   );
 }
