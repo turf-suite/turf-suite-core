@@ -4,6 +4,9 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  corePlugins: {
+    preflight: false,
+  },
   content: [
     join(
       __dirname,
@@ -18,6 +21,7 @@ module.exports = {
         primary: {
           DEFAULT: "var(--primary)",
           foreground: "var(--primary-foreground)",
+          light: "#dbe5ff",
         },
         secondary: {
           DEFAULT: "var(--secondary)",

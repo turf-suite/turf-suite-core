@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-.light {
+:root {
   --primary: #B4C0FF;
   --primary-foreground: #1A1D1F;
   --secondary: #DEE5F6;

@@ -26,7 +26,7 @@
     "../../apps/stik/.next/types/**/*.ts",
     "../../dist/apps/stik/.next/types/**/*.ts",
     "next-env.d.ts"
-  ],
+, "../../libs/ui/src/lib/button.tsx", "../../libs/ui/src/lib/input.tsx"  ],
   "exclude": [
     "node_modules",
     "jest.config.ts",
