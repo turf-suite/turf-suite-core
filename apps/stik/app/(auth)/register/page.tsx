@@ -19,6 +19,7 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { useSupabase } from '../../providers';
+import PasswordInput from '../../components/PasswordInput';
 import { ChangeEvent, useState } from 'react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/navigation';
@@ -41,14 +42,8 @@ export default function Page() {
     setConfirmPassword(e.target.value);
   const emailErr =
     email != '' && !emailRegex.test(email) ? 'Please enter a valid email.' : '';
-  const passwordErr =
-    password != '' && password.length < 8
-      ? 'Please enter a password of at least 8 characters'
-      : '';
-  const passwordMatchErr =
-    password != confirmPassword && confirmPassword != ''
-      ? 'Entered password does not match'
-      : '';
+  const passwordErr = password != '' && password.length < 8
+  const passwordMatchErr = password != confirmPassword && confirmPassword != ''
   const handleSubmit = async () => {
     if (emailErr || passwordErr || passwordMatchErr) {
       return;
@@ -65,7 +60,7 @@ export default function Page() {
   };
 
   return (
-    <AuthPage altMessage='Already have an account?' btnMessage='Sign in'>
+    <AuthPage altMessage="Already have an account?" btnMessage="Sign in">
       <Stack direction={'column'} gap="20px">
         <Flex flexDirection={'column'}>
           {authError && (
@@ -96,34 +91,20 @@ export default function Page() {
               <FormErrorMessage size="sm">{emailErr}</FormErrorMessage>
             )}
           </FormControl>
-          <FormControl isRequired isInvalid={passwordErr.length > 0}>
-            <FormLabel>Password</FormLabel>
-            <InputGroup>
-              <Input
-                type="password"
-                variant="filled"
-                placeholder="dxc4ya1#k"
-                onChange={handlePasswordChange}
-              />
-            </InputGroup>
-            {passwordErr && (
-              <FormErrorMessage size="sm">{passwordErr}</FormErrorMessage>
-            )}
-          </FormControl>
-          <FormControl isRequired isInvalid={passwordMatchErr.length > 0}>
-            <FormLabel>Confirm Password</FormLabel>
-            <InputGroup>
-              <Input
-                type="password"
-                variant="filled"
-                placeholder="dxc4ya1#k"
-                onChange={handleConfirmPasswordChange}
-              />
-            </InputGroup>
-            {passwordMatchErr && (
-              <FormErrorMessage size="sm">{passwordMatchErr}</FormErrorMessage>
-            )}
-          </FormControl>
+          <PasswordInput
+            handleChange={handlePasswordChange}
+            error="Please enter a password with 8 or more chracters"
+            isError={passwordErr}
+            placeholder="dxc4ya1#k"
+            label="Password"
+          />
+          <PasswordInput
+            handleChange={handleConfirmPasswordChange}
+            error="The entered passwords don't match"
+            isError={passwordMatchErr}
+            placeholder="dxc4ya1#k"
+            label="Confirm Password"
+          />
         </Stack>
         <Stack direction={'column'} gap="10px">
           <Button

@@ -11,16 +11,17 @@ import {
   Text,
   FormLabel,
   FormControl,
-  FormHelperText,
-  InputRightElement,
+  Link,
   InputGroup,
   Input,
   FormErrorMessage,
 } from '@chakra-ui/react';
-import AuthPage from "../../components/authPage";
+import AuthPage from '../../components/authPage';
+import PasswordInput from '../../components/PasswordInput';
 import { useState, ChangeEvent } from 'react';
 import { useSupabase } from '../../providers';
 import { useRouter } from 'next/navigation';
+import NextLink from 'next/link';
 
 export default function Page() {
   const [email, setEmail] = useState('');
@@ -36,10 +37,7 @@ export default function Page() {
     setPassword(e.target.value);
   const emailErr =
     email != '' && !emailRegex.test(email) ? 'Please enter a valid email.' : '';
-  const passwordErr =
-    password != '' && password.length < 8
-      ? 'Please enter a password of at least 8 characters'
-      : '';
+  const passwordErr = password != '' && password.length < 8
   const handleSubmit = async () => {
     if (emailErr || passwordErr) {
       return;
@@ -84,20 +82,13 @@ export default function Page() {
               <FormErrorMessage size="sm">{emailErr}</FormErrorMessage>
             )}
           </FormControl>
-          <FormControl isRequired isInvalid={passwordErr.length > 0}>
-            <FormLabel>Password</FormLabel>
-            <InputGroup>
-              <Input
-                type="password"
-                variant="filled"
-                placeholder="dxc4ya1#k"
-                onChange={handlePasswordChange}
-              />
-            </InputGroup>
-            {passwordErr && (
-              <FormErrorMessage size="sm">{passwordErr}</FormErrorMessage>
-            )}
-          </FormControl>
+          <PasswordInput
+            placeholder="dxc4ya1#k"
+            error="Please enter a password of at least 8 characters"
+            isError={passwordErr}
+            label="Password"
+            handleChange={handlePasswordChange}
+          />
         </Stack>
         <Stack direction={'column'} gap="10px">
           <Button
@@ -119,9 +110,11 @@ export default function Page() {
           </Flex>
         </Stack>
         <Flex flexDirection={'column'} align={'center'}>
-          <Button variant="text">Forgot your password?</Button>
+          <Link size="sm" as={NextLink} href="/reset-password">
+            Forgot your password?
+          </Link>
         </Flex>
       </Stack>
     </AuthPage>
-  )
+  );
 }
