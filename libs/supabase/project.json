@@ -42,7 +42,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "supabase start",
-        "cwd": "libs/supabase"
+        "cwd": "libs/supabase/supabase"
       }
     },
     "stop": {

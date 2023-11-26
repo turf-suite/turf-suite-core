@@ -17,8 +17,8 @@ export const useSupabase = () => {
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const supabase = createClient(
-    process.env.SUPABASE_URL ?? '',
-    process.env.SUPABASE_KEY ?? ''
+    process.env.NEXT_SUPABASE_URL ?? '',
+    process.env.NEXT_SUPABASE_KEY ?? ''
   );
 
   return (

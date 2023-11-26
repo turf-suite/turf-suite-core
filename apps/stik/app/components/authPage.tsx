@@ -1,15 +1,25 @@
+'use client';
+
 import { Center, Box, Button, Flex } from '@chakra-ui/react';
 
-export default function Template({ children }: { children: React.ReactNode }) {
+export default function AuthPage({
+  children,
+  altMessage,
+  btnMessage,
+}: {
+  children: React.ReactNode;
+  altMessage: string;
+  btnMessage: string;
+}) {
   return (
     <div className="bg-gradient-to-r from-white to-primary-light h-screen flex flex-col">
       <div className="mr-12 ml-12 pt-10">
         <nav className="flex justify-between items-center">
           <ul>Logo</ul>
           <ul className="flex justify-center items-center">
-            <p className="text-sm mr-10 text-black">Already have an account?</p>
+            <p className="text-sm mr-10 text-black">{altMessage}</p>
             <Button colorScheme="purple" size="sm" variant="solid">
-              Sign in
+              {btnMessage}
             </Button>
           </ul>
         </nav>
