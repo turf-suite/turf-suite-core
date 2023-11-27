@@ -15,8 +15,8 @@ export default function AuthPage({
   btnLink: string;
 }) {
   return (
-    <div className="bg-gradient-to-r from-white to-primary-light h-screen flex flex-col">
-      <div className="mr-12 ml-12 pt-10">
+    <div className="bg-gradient-to-r from-white to-primary-light min-h-screen flex flex-col">
+      <div className="mr-12 ml-12 pt-10 flex-shrink-0">
         <nav className="flex justify-between items-center">
           <ul>Logo</ul>
           <ul className="flex justify-center items-center">
@@ -35,8 +35,8 @@ export default function AuthPage({
           </ul>
         </nav>
       </div>
-      <div className="flex-grow relative">
-        <Flex align="center" justify="center" h="full">
+      <div className="flex-grow relative overflow-auto flex items-center justify-center">
+        <Flex maxW="600px" align="center" justify="center" w="full">
           <Container
             bg="white"
             boxShadow={'md'}

@@ -26,6 +26,7 @@ export default function Page() {
   const supabase = useSupabase();
   const [responded, setResponded] = useState(false);
   const [email, setEmail] = useState('');
+  const [authError, setAuthError] = useState(false);
   const handleClick = async () => {
     return;
   };
@@ -33,13 +34,21 @@ export default function Page() {
   return (
     <AuthPage altMessage="No account?" btnMessage="Sign up" btnLink="/register">
       <Stack direction="column" gap="20px">
-        <Text fontSize="3xl" fontWeight={'Bold'}>
-          Reset Your Password
-        </Text>
-        <Text fontSize="sm">
-          An email will be sent if an account exists with it
-        </Text>
-        <InputGroup size="lg">
+      <Flex flexDirection={'column'}>
+          {authError && (
+            <Alert status="error">
+              <AlertIcon />
+              <AlertDescription>{authError}</AlertDescription>
+            </Alert>
+          )}
+          <Text fontWeight={'bold'} fontSize="3xl">
+            Reset Your Password
+          </Text>
+          <Text fontSize="sm">
+            You will receive an email if there is an account with the entered email.
+          </Text>
+        </Flex>
+        <InputGroup size="md">
           <Input pr="4.5rem" type="text" placeholder="Enter Email" />
           <InputRightElement width="4.5rem">
             <Button colorScheme='accent' size="sm" onClick={handleClick}>
