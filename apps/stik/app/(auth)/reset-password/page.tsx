@@ -31,7 +31,7 @@ export default function Page() {
   };
 
   return (
-    <AuthPage altMessage="No account?" btnMessage="Sign up">
+    <AuthPage altMessage="No account?" btnMessage="Sign up" btnLink="/register">
       <Stack direction="column" gap="20px">
         <Text fontSize="3xl" fontWeight={'Bold'}>
           Reset Your Password
@@ -42,7 +42,7 @@ export default function Page() {
         <InputGroup size="lg">
           <Input pr="4.5rem" type="text" placeholder="Enter Email" />
           <InputRightElement width="4.5rem">
-            <Button size="sm" onClick={handleClick}>
+            <Button colorScheme='accent' size="sm" onClick={handleClick}>
               Send
             </Button>
           </InputRightElement>

@@ -60,7 +60,7 @@ export default function Page() {
   };
 
   return (
-    <AuthPage altMessage="Already have an account?" btnMessage="Sign in">
+    <AuthPage altMessage="Already have an account?" btnMessage="Sign in" btnLink="/login">
       <Stack direction={'column'} gap="20px">
         <Flex flexDirection={'column'}>
           {authError && (
@@ -110,7 +110,7 @@ export default function Page() {
           <Button
             isLoading={isLoading}
             loadingText="Processing"
-            colorScheme="purple"
+            colorScheme="accent"
             onClick={handleSubmit}
             variant="solid"
             rightIcon={<ArrowForwardIcon />}
@@ -118,10 +118,10 @@ export default function Page() {
             Continue
           </Button>
           <Flex flexDirection={'row'} gap="10px" width="full">
-            <Button className="flex-1" colorScheme="purple" variant="outline">
+            <Button className="flex-1" colorScheme="accent" variant="outline">
               Sign up with Google
             </Button>
-            <Button className="flex-1" colorScheme="purple" variant="outline">
+            <Button className="flex-1" colorScheme="accent" variant="outline">
               Sign up with Slack
             </Button>
           </Flex>
@@ -130,13 +130,13 @@ export default function Page() {
           <Text>By continuing, you agree to our</Text>
           <Text>
             <span>
-              <Link color="purple" href={'/'}>
+              <Link color="accent.700" href={'/'}>
                 Privacy Policy
               </Link>
             </span>{' '}
             and{' '}
             <span>
-              <Link color="purple" href={'/'}>
+              <Link color="accent.700" href={'/'}>
                 Terms of Service
               </Link>
             </span>

@@ -5,7 +5,6 @@ import {
   AlertDescription,
   AlertIcon,
   Button,
-  Center,
   Flex,
   Stack,
   Text,
@@ -54,7 +53,7 @@ export default function Page() {
   };
 
   return (
-    <AuthPage altMessage="New with us?" btnMessage="Start for free">
+    <AuthPage altMessage="New with us?" btnMessage="Start for free" btnLink="/register">
       <Stack direction={'column'} gap="20px">
         <Flex flexDirection={'column'}>
           {authError && (
@@ -94,17 +93,17 @@ export default function Page() {
           <Button
             isLoading={isLoading}
             loadingText="Processing"
-            colorScheme="purple"
+            colorScheme="accent"
             onClick={handleSubmit}
             variant="solid"
           >
             Sign in
           </Button>
           <Flex flexDirection={'row'} gap="10px" width="full">
-            <Button className="flex-1" colorScheme="purple" variant="outline">
+            <Button className="flex-1" colorScheme="accent" variant="outline">
               Sign in with Google
             </Button>
-            <Button className="flex-1" colorScheme="purple" variant="outline">
+            <Button className="flex-1" colorScheme="accent" variant="outline">
               Sign in with Slack
             </Button>
           </Flex>

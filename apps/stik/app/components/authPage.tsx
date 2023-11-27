@@ -1,15 +1,18 @@
 'use client';
 
-import { Center, Box, Button, Flex } from '@chakra-ui/react';
+import { Box, Container, Button, Flex, Link } from '@chakra-ui/react';
+import NextLink from 'next/link';
 
 export default function AuthPage({
   children,
   altMessage,
   btnMessage,
+  btnLink,
 }: {
   children: React.ReactNode;
   altMessage: string;
   btnMessage: string;
+  btnLink: string;
 }) {
   return (
     <div className="bg-gradient-to-r from-white to-primary-light h-screen flex flex-col">
@@ -18,19 +21,33 @@ export default function AuthPage({
           <ul>Logo</ul>
           <ul className="flex justify-center items-center">
             <p className="text-sm mr-10 text-black">{altMessage}</p>
-            <Button colorScheme="purple" size="sm" variant="solid">
-              {btnMessage}
-            </Button>
+            <Link as={NextLink} href={btnLink}>
+              <Button
+                bg="primary.200"
+                size="sm"
+                variant="solid"
+                boxShadow="md"
+                _hover={{ color: 'black', backgroundColor: 'primary.300' }}
+              >
+                {btnMessage}
+              </Button>
+            </Link>
           </ul>
         </nav>
       </div>
       <div className="flex-grow relative">
         <Flex align="center" justify="center" h="full">
-          <Box bg="white" boxShadow={'md'} borderRadius={'md'} width={'600px'}>
-            <Center marginTop="40px" marginBottom="40px">
+          <Container
+            bg="white"
+            boxShadow={'md'}
+            borderRadius={'md'}
+            maxW="600px"
+            centerContent
+          >
+            <Box paddingTop="40px" paddingBottom="40px">
               {children}
-            </Center>
-          </Box>
+            </Box>
+          </Container>
         </Flex>
       </div>
     </div>

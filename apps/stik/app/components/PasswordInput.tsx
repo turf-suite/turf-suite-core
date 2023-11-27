@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEventHandler, useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
 import {
   IconButton,
   FormControl,
@@ -25,7 +25,7 @@ const PasswordInput: React.FC<PasswordInputProps> = (
 ) => {
   const [show, setShow] = useState(false);
   const handleShowClick = () => setShow(!show);
-  
+
   return (
     <FormControl isRequired isInvalid={props.isError}>
       <FormLabel>{props.label}</FormLabel>
