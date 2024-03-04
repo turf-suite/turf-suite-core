@@ -13,10 +13,10 @@ import {
   Input,
   FormErrorMessage,
 } from '@chakra-ui/react';
-import AuthPage from './AuthPage';
+import AuthLayout from './AuthLayout';
 import PasswordInput from './PasswordInput';
 import { useState, ChangeEvent } from 'react';
-import { useRouter } from 'next/navigation';
+import { useNavigate } from 'react-router-dom';
 import { useSupabase } from '@turf-suite-core/react-shared';
 
 export default function Page() {
@@ -26,7 +26,7 @@ export default function Page() {
   const [authError, setAuthError] = useState('');
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const supabase = useSupabase();
-  const router = useRouter();
+  const navigate = useNavigate();
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) =>
     setEmail(e.target.value);
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -48,11 +48,11 @@ export default function Page() {
       return;
     }
     setIsLoading(false);
-    router.push('/');
+    navigate('/');
   };
 
   return (
-    <AuthPage
+    <AuthLayout
       altMessage="New with us?"
       btnMessage="Start for free"
       btnLink="/register"
@@ -117,6 +117,6 @@ export default function Page() {
           </Link>
         </Flex>
       </Stack>
-    </AuthPage>
+    </AuthLayout>
   );
 }

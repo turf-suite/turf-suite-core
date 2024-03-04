@@ -1,7 +1,6 @@
 import { Box, Container, Button, Flex, Link } from '@chakra-ui/react';
-import NextLink from 'next/link';
 
-export default function AuthPage({
+export default function AuthLayout({
   children,
   altMessage,
   btnMessage,
@@ -19,7 +18,7 @@ export default function AuthPage({
           <ul>Logo</ul>
           <ul className="flex justify-center items-center">
             <p className="text-sm mr-10 text-black">{altMessage}</p>
-            <Link as={NextLink} href={btnLink}>
+            <Link href={btnLink}>
               <Button
                 bg="primary.200"
                 size="sm"

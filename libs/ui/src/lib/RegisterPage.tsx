@@ -16,9 +16,9 @@ import {
 import PasswordInput from './PasswordInput';
 import { ChangeEvent, useState } from 'react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
-import { useRouter } from 'next/navigation';
-import AuthPage from './AuthPage';
+import AuthLayout from './AuthLayout';
 import { useSupabase } from '@turf-suite-core/react-shared';
+import { useNavigate } from 'react-router-dom';
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('');
@@ -28,7 +28,7 @@ export default function RegisterPage() {
   const [authError, setAuthError] = useState('');
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const supabase = useSupabase();
-  const router = useRouter();
+  const navigate = useNavigate();
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) =>
     setEmail(e.target.value);
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -54,11 +54,11 @@ export default function RegisterPage() {
       return;
     }
     setIsLoading(false);
-    router.push('/');
+    navigate('/');
   };
 
   return (
-    <AuthPage
+    <AuthLayout
       altMessage="Already have an account?"
       btnMessage="Sign in"
       btnLink="/login"
@@ -145,6 +145,6 @@ export default function RegisterPage() {
           </Text>
         </Flex>
       </Stack>
-    </AuthPage>
+    </AuthLayout>
   );
 }
