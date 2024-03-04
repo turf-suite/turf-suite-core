@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@turf-suite-core/db": ["libs/src/index.ts"],
+      "@turf-suite-core/react-shared": ["libs/react-shared/src/index.ts"],
       "@turf-suite-core/supabase": ["libs/supabase/src/index.ts"],
       "@turf-suite-core/ui": ["libs/ui/src/index.ts"],
       "@turf-suite-core/ui/server": ["libs/ui/src/server.ts"]
