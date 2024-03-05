@@ -19,7 +19,7 @@ import { useState, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSupabase } from '@turf-suite-core/react-shared';
 
-export default function Page() {
+export const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -119,4 +119,4 @@ export default function Page() {
       </Stack>
     </AuthLayout>
   );
-}
+};

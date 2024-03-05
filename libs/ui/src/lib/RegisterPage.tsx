@@ -20,7 +20,7 @@ import AuthLayout from './AuthLayout';
 import { useSupabase } from '@turf-suite-core/react-shared';
 import { useNavigate } from 'react-router-dom';
 
-export default function RegisterPage() {
+export const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -147,4 +147,4 @@ export default function RegisterPage() {
       </Stack>
     </AuthLayout>
   );
-}
+};
