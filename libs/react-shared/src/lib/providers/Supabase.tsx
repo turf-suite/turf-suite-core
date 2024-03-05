@@ -1,6 +1,7 @@
 import { useContext, createContext } from 'react';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+import assert from 'assert';
 
 const SupabaseContext = createContext<SupabaseClient | null>(null);
 
@@ -12,14 +13,21 @@ export const useSupabase = () => {
   return context;
 };
 
-export function SupabaseProvider({ children }: { children: ReactNode }) {
-  const supabase = createClient(
-    process.env.VITE_SUPABASE_URL ?? '',
-    process.env.VITE_SUPABASE_KEY ?? ''
-  );
+interface SupabaseProviderProps {
+  url: string;
+  supabaseKey: string;
+  children?: ReactNode;
+}
+
+export const SupabaseProvider: React.FC<SupabaseProviderProps> = ({
+  url,
+  supabaseKey,
+  children,
+}) => {
+  const supabase = createClient(url ?? '', supabaseKey ?? '');
   return (
     <SupabaseContext.Provider value={supabase}>
       {children}
     </SupabaseContext.Provider>
   );
-}
+};
