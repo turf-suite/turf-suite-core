@@ -41,4 +41,7 @@ Thumbs.db
 # Next.js
 .next
 *.env.local
+*.env.development
 *.env
+
+.nx
