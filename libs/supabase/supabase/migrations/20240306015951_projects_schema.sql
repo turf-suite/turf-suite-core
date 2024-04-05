@@ -31,6 +31,8 @@ create table if not exists public.projects (
 create table if not exists public.project_teams (
     project_id serial not null,
     team_id serial not null,
+    constraint project_id_fkey foreign key (project_id) references public.projects (id) on delete cascade,
+    constraint team_id_fkey foreign key (team_id) references public.teams (id) on delete cascade,
     constraint project_teams_pkey primary key (team_id, project_id)
 )
 
