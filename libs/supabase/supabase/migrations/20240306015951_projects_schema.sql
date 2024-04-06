@@ -34,7 +34,7 @@ create table if not exists public.project_teams (
     constraint project_id_fkey foreign key (project_id) references public.projects (id) on delete cascade,
     constraint team_id_fkey foreign key (team_id) references public.teams (id) on delete cascade,
     constraint project_teams_pkey primary key (team_id, project_id)
-)
+) tablespace pg_default;
 
 create table if not exists public.kanban_projects (
     constraint kanban_projects_fkey foreign key (id) references public.projects (id) on delete cascade
