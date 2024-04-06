@@ -51,6 +51,13 @@
         "command": "supabase stop",
         "cwd": "libs/supabase"
       }
+    },
+    "reset": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "supabase db reset",
+        "cwd": "libs/supabase"
+      }
     }
   },
   "create-local-snapshot": {
