@@ -1,21 +1,20 @@
 create table if not exists public.boards (
-  id bigserial,
+  board_name text not null,
   project_id serial not null,
   team_id serial not null,
-  constraint boards_pkey primary key (id),
+  constraint boards_pkey primary key (project_id, board_name),
   constraint projects_fkey foreign key (project_id) references public.projects (id) on delete cascade,
   constraint team_fkey foreign key (team_id) references public.teams (id) on delete cascade
 ) tablespace pg_default;
 
 create table if not exists public.board_states (
-  id bigserial,
   board_id bigserial not null,
   name text not null,
   ordering smallint not null,
   is_completion_state boolean not null,
   is_cancelled_state boolean not null,
   constraint board_fkey foreign key (board_id) references public.boards (id) on delete cascade,
-  constraint board_states_pkey primary key (id),
+  constraint board_states_pkey primary key (name, board_id),
   constraint unique_name unique (board_id, name)
 ) tablespace pg_default;
 
