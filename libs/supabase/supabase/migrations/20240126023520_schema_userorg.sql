@@ -9,7 +9,7 @@ create table if not exists
 
 create table if not exists
   public.profiles (
-    id uuid not null,
+    user_id uuid not null,
     birthday date null,
     first_name text null,
     last_name text null,
@@ -17,8 +17,8 @@ create table if not exists
     phone text null,
     avatar text null,
     organization uuid not null,
-    constraint profiles_pkey primary key (id),
+    constraint profiles_pkey primary key (user_id),
     constraint profiles_phone_key unique (phone),
     constraint profiles_organization_fkey foreign key (organization) references organizations (id) on delete cascade,
-    constraint profiles_id_fkey foreign key (id) references auth.users (id) on delete cascade
+    constraint profiles_id_fkey foreign key (user_id) references auth.users (id) on delete cascade
   ) tablespace pg_default;
