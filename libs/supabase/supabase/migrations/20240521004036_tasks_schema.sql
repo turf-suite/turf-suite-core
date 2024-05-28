@@ -5,6 +5,7 @@ create table public.tasks (
   task_title text,
   task_description text,
   assignee uuid,
+  reviewer uuid,
   due_date date,
   hours_estimated integer,
   hours_completed integer,
@@ -12,6 +13,8 @@ create table public.tasks (
   constraint board_fkey foreign key (board_name, project_id)
     references public.boards (board_name, project_id) on delete cascade,
   constraint assignee_fkey foreign key (assignee)
+    references public.profiles (user_id),
+  constraint reviewer_fkey foreign key (reviewer)
     references public.profiles (user_id)
 ) tablespace pg_default;
 
