@@ -12,7 +12,7 @@ create table if not exists public.team_members (
     member_id uuid not null,
     org_id uuid not null,
     team_id serial not null,
-    constraint member_id_fkey foreign key (member_id) references public.profiles (id) on delete cascade,
+    constraint member_id_fkey foreign key (member_id) references public.profiles (user_id) on delete cascade,
     constraint org_id_fkey foreign key (org_id) references public.organizations (id) on delete cascade,
     constraint team_id_fkey foreign key (team_id) references public.teams (id) on delete cascade,
     constraint team_members_pkey primary key (member_id, org_id, team_id)
@@ -43,7 +43,7 @@ create table if not exists public.kanban_projects (
 
 create table if not exists public.agile_projects (
     scrum_master uuid,
-    constraint scrum_master_fkey foreign key (scrum_master) references public.profiles (id),
+    constraint scrum_master_fkey foreign key (scrum_master) references public.profiles (user_id),
     constraint agile_projects_fkey foreign key (id) references public.projects (id) on delete cascade
 ) inherits (public.projects) tablespace pg_default;
 
