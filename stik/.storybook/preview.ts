@@ -1,4 +1,5 @@
 import { extendTheme } from '@chakra-ui/react';
+import { Preview } from '@storybook/react';
 
 const theme = extendTheme({
   colors: {
@@ -27,8 +28,12 @@ const theme = extendTheme({
   },
 });
 
-export const parameters = {
-  chakra: {
-    theme,
+const preview: Preview = {
+  parameters: {
+    chakra: {
+      theme,
+    },
   },
 };
+
+export default preview;
