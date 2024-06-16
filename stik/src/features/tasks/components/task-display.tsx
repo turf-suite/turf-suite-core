@@ -61,6 +61,7 @@ const Task: React.FC<TaskProps> = (props: TaskProps) => {
   });
   const { onToggle, onClose, isOpen } = useDisclosure();
   const taskModal = useDisclosure();
+  const reviewerName = 'Guuss Ketelings';
 
   return (
     <Popover
@@ -178,11 +179,14 @@ const Task: React.FC<TaskProps> = (props: TaskProps) => {
           name={props.name}
           taskId={props.id}
           description={props.description}
+          startDate={props.startDate}
+          dueDate={props.dueDate}
           onClose={taskModal.onClose}
           isOpen={taskModal.isOpen}
           status={props.status}
           tags={props.tags}
           assigneeName={props.assigneeName}
+          reviewerName={reviewerName}
         />
       </Box>
     </Popover>
