@@ -18,5 +18,10 @@ export const Display: Story = {
     dueDate: new Date(2023, 0, 14),
     hoursCompleted: 1,
     hoursEstimated: 15,
+    description:
+      'As a user, I want to be able to create new tasks and have them displayed in a board view so that I can track my work and see what needs to be done',
+    status: 'In progress',
+    tags: ['Projects', 'Tasks', 'Critical'],
+    assigneeName: 'Ryan Monahan',
   },
 };

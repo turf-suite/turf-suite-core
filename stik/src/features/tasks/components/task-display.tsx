@@ -25,15 +25,20 @@ import {
 import TaskCommentsList from './task-comments';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import TaskView from './task-view';
 
-interface TaskDisplayProps {
+interface TaskProps {
   name: string;
   id: string;
   assigneeUrl: string;
+  assigneeName: string;
+  description: string;
+  status: string;
   startDate: Date | undefined;
   dueDate: Date;
   hoursCompleted: number;
   hoursEstimated: number;
+  tags: Array<string>;
 }
 
 const prettyDate = (date: Date): string => {
@@ -43,7 +48,7 @@ const prettyDate = (date: Date): string => {
   });
 };
 
-const Task: React.FC<TaskDisplayProps> = (props: TaskDisplayProps) => {
+const Task: React.FC<TaskProps> = (props: TaskProps) => {
   const {
     setNodeRef,
     attributes,
@@ -55,6 +60,7 @@ const Task: React.FC<TaskDisplayProps> = (props: TaskDisplayProps) => {
     id: props.id,
   });
   const { onToggle, onClose, isOpen } = useDisclosure();
+  const taskModal = useDisclosure();
 
   return (
     <Popover
@@ -114,10 +120,16 @@ const Task: React.FC<TaskDisplayProps> = (props: TaskDisplayProps) => {
                 </ButtonGroup>
               </Flex>
               <Flex width="100%" direction="column" gap="12px">
-                <Text fontSize="md" fontWeight="bold">
-                  {props.id}
-                </Text>
-                <Text fontSize="sm">{props.name}</Text>
+                <button
+                  aria-label="Open Task"
+                  onClick={taskModal.onOpen}
+                  style={{ textAlign: 'start' }}
+                >
+                  <Text fontSize="md" fontWeight="bold" marginBottom={'4px'}>
+                    {props.id}
+                  </Text>
+                  <Text fontSize="sm">{props.name}</Text>
+                </button>
                 <Flex width="100%">
                   <Avatar src={props.assigneeUrl} size="xs" />
                   <Spacer />
@@ -162,6 +174,16 @@ const Task: React.FC<TaskDisplayProps> = (props: TaskDisplayProps) => {
           </Flex>
         </PopoverTrigger>
         <TaskCommentsList comments={[]} taskId={props.id} />
+        <TaskView
+          name={props.name}
+          taskId={props.id}
+          description={props.description}
+          onClose={taskModal.onClose}
+          isOpen={taskModal.isOpen}
+          status={props.status}
+          tags={props.tags}
+          assigneeName={props.assigneeName}
+        />
       </Box>
     </Popover>
   );
