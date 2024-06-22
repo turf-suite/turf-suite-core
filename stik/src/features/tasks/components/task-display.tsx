@@ -73,7 +73,7 @@ const Task: React.FC<TaskProps> = (props: TaskProps) => {
     >
       <Box
         ref={setNodeRef}
-        maxWidth="275px"
+        maxWidth="300px"
         bg="white"
         padding="15px"
         zIndex={isDragging ? '100' : 'auto'}
